@@ -9,10 +9,6 @@ Time tracker is a simple website for tracking how you spend your time.
 * [Chart.js](http://www.chartjs.org/)
 * [React.js](https://reactjs.org/)
 
-## Installation
-1. Download the .html, .js and .css files
-2. Load the index.html file in a browser
-
 ## Usage
 * Click on the "add tracker" button to add a tracker
 * A form will be displayed and the user will be prompted to enter a name and colour for the tracker
