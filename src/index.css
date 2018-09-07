@@ -109,8 +109,8 @@ button#add-tracker:hover {
   background: #fff;
   border-top: 6px solid #3994df;
   position: fixed;
-  width: 300px;
-  height: 250px;
+  width: 325px;
+  height: 300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -177,6 +177,7 @@ button#add-tracker:hover {
 
 #add-form input[type="button"],  #edit-form input[type="button"]{
   background: rgb(253, 239, 239);
+  margin-left: 10px;
 }
 
 #add-form input[type="button"]:hover, #edit-form input[type="button"]:hover {
@@ -184,7 +185,7 @@ button#add-tracker:hover {
 }
 
 #add-form > div:last-child, #edit-form > div:last-child {
-  top: 50px;
+  padding-top: 20px;
 }
 
 #canvas-container {

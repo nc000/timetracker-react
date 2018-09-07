@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CompactPicker } from 'react-color';
 
 class AddForm extends Component {
   constructor(props) {
@@ -16,6 +17,10 @@ class AddForm extends Component {
     });
   }
 
+  handleColourChange = (colour, event) => {
+    this.setState({colour: colour.hex});
+  }
+
   render() {
     return (
       <form id="add-form" onSubmit={() => {
@@ -31,7 +36,10 @@ class AddForm extends Component {
         </div>
         <div>
           <label htmlFor="colour">Colour:</label>
-          <input name="colour" id="colour" type="color" onChange={this.handleChange} value={this.state.colour} />
+          <CompactPicker 
+            color={this.state.colour}
+            onChangeComplete={this.handleColourChange}
+          />
         </div>
         <div>
           <input value="Submit" id="submit" type="submit" />
