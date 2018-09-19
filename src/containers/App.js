@@ -12,11 +12,6 @@ class App extends Component {
       <div id="trackers-and-chart-container">
         <TrackersList
           id="trackers-list"
-          trackers={[...this.state.trackers.values()]}
-          handlePlayPause={this.handlePlayPause}
-          handleAdd={this.handleAdd}
-          handleEdit={this.handleEdit}
-          handleDelete={this.handleDelete}
         />
         <DoughnutChart id="canvas-container" />
       </div>

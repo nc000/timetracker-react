@@ -28,6 +28,7 @@ class AddForm extends Component {
       <form id="add-form" onSubmit={e => {
         e.preventDefault()
         this.props.dispatch(addTracker(this.state.title, this.state.colour));
+        this.props.handleCancel();
       }} >
         <div>
           <h1>Add Tracker</h1>
@@ -45,11 +46,11 @@ class AddForm extends Component {
         </div>
         <div>
           <input value="Submit" id="submit" type="submit" />
-          <input value="Cancel" id="cancel" type="button" onClick={this.props.handleAddFormCancel} />
+          <input value="Cancel" id="cancel" type="button" onClick={this.props.handleCancel} />
         </div>
       </form>
     );
   }
 }
 
-export default AddForm;
+export default connect()(AddForm);

@@ -10,15 +10,15 @@ class Tracker extends Component {
     this.state = {
       editMode: false,
     };
-    this.tracker = props.trackerDetails;
+    this.tracker = props.tracker;
     this.running = false;
     this.interval = null;
   }
 
-  handlePlayToggle() {
+  handlePlayToggle = () => {
     this.running = !this.running;
     if (this.running) {
-      const startTime = Date.now() - tracker.lapse;
+      const startTime = Date.now() - this.tracker.lapse;
       this.interval = setInterval(() => {
         const newLapse = Date.now() - startTime;
         this.props.dispatch(updateLapse(this.tracker.id, newLapse));
@@ -28,17 +28,17 @@ class Tracker extends Component {
     }
   }
 
-  handleEditToggle() {
+  handleEditToggle = () => {
     this.setState({
       editMode: !this.state.editMode,
     });
   }
 
-  handleDelete() {
+  handleDelete = () => {
     this.props.dispatch(deleteTracker(this.tracker.id));
   }
 
-  handleEditFormCancel = () => {
+  handleEditCancel = () => {
     this.setState({
       editMode: false
     });

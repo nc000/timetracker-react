@@ -1,4 +1,5 @@
 const trackers = (state = [], action) => {
+  const trackerIndex = action.id ? state.findIndex(tracker => tracker.id == action.id) : null;
   switch (action.type) {
     case 'ADD_TRACKER':
       return [
@@ -11,7 +12,6 @@ const trackers = (state = [], action) => {
         }
       ];
     case 'EDIT_TRACKER':
-      const trackerIndex = state.findIndex(tracker => tracker.id == action.id);
       return [
         state.slice(0, trackerIndex),
         Object.assign({}, state[trackerIndex], {
@@ -21,13 +21,11 @@ const trackers = (state = [], action) => {
         state.slice(trackerIndex + 1),
       ];
     case 'DELETE_TRACKER':
-    const trackerIndex = state.findIndex(tracker => tracker.id == action.id);
       return [
         state.slice(0, trackerIndex),
         state.slice(trackerIndex + 1),
       ];
     case 'UPDATE_LAPSE':
-    const trackerIndex = state.findIndex(tracker => tracker.id == action.id);    
       return [
         state.slice(0, trackerIndex),
         Object.assign({}, state[trackerIndex], {

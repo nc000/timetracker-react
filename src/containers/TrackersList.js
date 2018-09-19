@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Tracker from "./Tracker";
+import AddForm from '../components/AddForm';
 
 class TrackersList extends Component {
   constructor(props) {
@@ -10,13 +11,13 @@ class TrackersList extends Component {
     };
   }
 
-  handleAdd() {
+  handleAdd = () => {
     this.setState({
       addMode: !this.state.addMode,
     });
   }
 
-  handleAddFormCancel = () => {
+  handleCancel = () => {
     this.setState({
       addMode: false
     });
@@ -29,10 +30,7 @@ class TrackersList extends Component {
       return <Tracker 
                 className="tracker"
                 key={tracker.id}
-                trackerDetails={tracker}
-                handlePlayPause={this.props.handlePlayPause}
-                handleEdit={this.props.handleEdit}
-                handleDelete={this.props.handleDelete}
+                tracker={tracker}
              />
       });
     }
@@ -48,7 +46,7 @@ class TrackersList extends Component {
         </div>
         {this.state.addMode ? 
           <div>
-            <AddForm handleAddFormCancel={this.handleAddFormCancel} />
+            <AddForm handleCancel={this.handleCancel} />
             <div id="cover-div" />
           </div> 
         : ""}

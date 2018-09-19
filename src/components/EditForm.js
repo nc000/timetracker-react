@@ -48,7 +48,7 @@ class EditForm extends Component {
         </div>
         <div>
           <input value="Submit" id="submit" type="submit" />
-          <input value="Cancel" id="cancel" type="button" onClick={this.props.handleAddFormCancel} />
+          <input value="Cancel" id="cancel" type="button" onClick={this.props.handleCancel} />
         </div>
       </form>
     );
