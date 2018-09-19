@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Doughnut } from 'react-chartjs-2';
 
 class DoughnutChart extends Component {
@@ -22,4 +23,8 @@ class DoughnutChart extends Component {
   }
 }
 
-export default DoughnutChart;
+const mapStateToProps = state => ({
+  trackers: state,
+})
+
+export default connect(mapStateToProps)(DoughnutChart);

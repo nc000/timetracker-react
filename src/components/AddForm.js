@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { addTracker } from '../actions';
 import { CompactPicker } from 'react-color';
 
 class AddForm extends Component {
@@ -17,15 +19,15 @@ class AddForm extends Component {
     });
   }
 
-  handleColourChange = (colour, event) => {
+  handleColourChange = colour => {
     this.setState({colour: colour.hex});
   }
 
   render() {
     return (
-      <form id="add-form" onSubmit={() => {
-        this.props.handleAddSubmit(this.state);
-        return false;
+      <form id="add-form" onSubmit={e => {
+        e.preventDefault()
+        this.props.dispatch(addTracker(this.state.title, this.state.colour));
       }} >
         <div>
           <h1>Add Tracker</h1>
@@ -43,7 +45,7 @@ class AddForm extends Component {
         </div>
         <div>
           <input value="Submit" id="submit" type="submit" />
-          <input value="Cancel" id="cancel" type="button" onClick={() => this.props.handleAddCancel()} />
+          <input value="Cancel" id="cancel" type="button" onClick={this.props.handleAddFormCancel} />
         </div>
       </form>
     );

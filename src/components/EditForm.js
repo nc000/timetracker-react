@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { editTracker } from '../actions';
 import { CompactPicker } from 'react-color';
 
 class EditForm extends Component {
@@ -18,21 +20,17 @@ class EditForm extends Component {
     });
   }
 
-  handleColourChange = (colour, event) => {
+  handleColourChange = colour => {
     this.setState({colour: colour.hex});
-  }
-
-  handleSubmit = () => {
-    this.tracker.title = this.state.title;
-    this.tracker.colour = this.state.colour;
-    this.props.handleEditSubmit(this.tracker.id, this.tracker);
   }
 
   render() {
     return (
-      <form id="edit-form" onSubmit={() => {
-        this.handleSubmit();
-        return false;
+      <form id="edit-form" onSubmit={e => {
+        e.preventDefault;
+        this.tracker.title = this.state.title;
+        this.tracker.colour = this.state.colour;
+        this.props.dispatch(editTracker(this.tracker.id, this.tracker.title, this.tracker.colour));
       }} >
         <div>
           <h1>Edit Tracker</h1>
@@ -50,11 +48,11 @@ class EditForm extends Component {
         </div>
         <div>
           <input value="Submit" id="submit" type="submit" />
-          <input value="Cancel" id="cancel" type="button" onClick={() => this.props.handleEditCancel()} />
+          <input value="Cancel" id="cancel" type="button" onClick={this.props.handleAddFormCancel} />
         </div>
       </form>
     );
   }
 }
 
-export default EditForm;
+export default connect()(EditForm);
