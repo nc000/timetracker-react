@@ -9,23 +9,25 @@ class Tracker extends Component {
     super(props);
     this.state = {
       editMode: false,
+      running: false,
     };
-    this.tracker = props.tracker;
-    this.running = false;
+    // this.tracker = props.tracker;
     this.interval = null;
   }
 
   handlePlayToggle = () => {
-    this.running = !this.running;
-    if (this.running) {
-      const startTime = Date.now() - this.tracker.lapse;
+    if (this.state.running) {
+      clearInterval(this.interval);
+    } else {
+      const startTime = Date.now() - this.props.tracker.lapse;
       this.interval = setInterval(() => {
         const newLapse = Date.now() - startTime;
-        this.props.dispatch(updateLapse(this.tracker.id, newLapse));
+        this.props.dispatch(updateLapse(this.props.tracker.id, newLapse));
       }, 250)
-    } else {
-      clearInterval(this.interval);
     }
+    this.setState(state => ({
+      running: !state.running,
+    }));
   }
 
   handleEditToggle = () => {
@@ -35,10 +37,11 @@ class Tracker extends Component {
   }
 
   handleDelete = () => {
-    this.props.dispatch(deleteTracker(this.tracker.id));
+    clearInterval(this.interval);
+    this.props.dispatch(deleteTracker(this.props.tracker.id));
   }
 
-  handleEditCancel = () => {
+  handleCancel = () => {
     this.setState({
       editMode: false
     });
@@ -61,13 +64,13 @@ class Tracker extends Component {
         <button 
           className="play-pause" 
           onClick={this.handlePlayToggle}>
-          {this.tracker.running ? <FontAwesomeIcon icon="pause" /> : <FontAwesomeIcon icon="play" />}
+          {this.state.running ? <FontAwesomeIcon icon="pause" /> : <FontAwesomeIcon icon="play" />}
         </button>
-        <span>{this.tracker.title}</span>
-        <span>{this.formatTime(this.tracker.lapse/1000)}</span>
+        <span>{this.props.tracker.title}</span>
+        <span>{this.formatTime(this.props.tracker.lapse/1000)}</span>
         <button 
           className="edit" 
-          onClick={this.handleEdit}>
+          onClick={this.handleEditToggle}>
           <FontAwesomeIcon icon="edit" />
         </button>
         <button 
@@ -77,7 +80,7 @@ class Tracker extends Component {
         </button>
         {this.state.editMode ? 
           <div>
-            <EditForm tracker={this.tracker} handleEditFormCancel={this.handleEditFormCancel} />
+            <EditForm tracker={this.props.tracker} handleCancel={this.handleCancel} />
             <div id="cover-div" />
           </div> 
         : ""}

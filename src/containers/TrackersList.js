@@ -31,6 +31,7 @@ class TrackersList extends Component {
                 className="tracker"
                 key={tracker.id}
                 tracker={tracker}
+                trackerLapse={tracker.lapse}
              />
       });
     }

@@ -27,10 +27,9 @@ class EditForm extends Component {
   render() {
     return (
       <form id="edit-form" onSubmit={e => {
-        e.preventDefault;
-        this.tracker.title = this.state.title;
-        this.tracker.colour = this.state.colour;
-        this.props.dispatch(editTracker(this.tracker.id, this.tracker.title, this.tracker.colour));
+        e.preventDefault();
+        this.props.dispatch(editTracker(this.tracker.id, this.state.title, this.state.colour));
+        this.props.handleCancel();
       }} >
         <div>
           <h1>Edit Tracker</h1>

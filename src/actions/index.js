@@ -20,6 +20,7 @@ export const deleteTracker = id => ({
 
 export const updateLapse = (id, newLapse) => ({
   type: 'UPDATE_LAPSE',
+  id,
   newLapse,
 });
 
