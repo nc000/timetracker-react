@@ -11,7 +11,6 @@ class Tracker extends Component {
       editMode: false,
       running: false,
     };
-    // this.tracker = props.tracker;
     this.interval = null;
   }
 
