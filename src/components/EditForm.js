@@ -36,7 +36,7 @@ class EditForm extends Component {
         </div>
         <div>
           <label htmlFor="title">Title:</label>
-          <input name="title" id="title" type="text" required value={this.state.title} onChange={this.handleChange} />
+          <input name="title" type="text" required value={this.state.title} onChange={this.handleChange} />
         </div>
         <div>
           <label htmlFor="colour">Colour:</label>
@@ -46,8 +46,8 @@ class EditForm extends Component {
           />
         </div>
         <div>
-          <input value="Submit" id="submit" type="submit" />
-          <input value="Cancel" id="cancel" type="button" onClick={this.props.handleCancel} />
+          <input value="Submit" type="submit" />
+          <input value="Cancel" type="button" onClick={this.props.handleCancel} />
         </div>
       </form>
     );

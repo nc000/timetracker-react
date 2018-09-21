@@ -35,7 +35,7 @@ class AddForm extends Component {
         </div>
         <div>
           <label htmlFor="title">Title:</label>
-          <input name="title" id="title" type="text" onChange={this.handleChange} required />
+          <input name="title" type="text" onChange={this.handleChange} required />
         </div>
         <div>
           <label htmlFor="colour">Colour:</label>
@@ -45,8 +45,8 @@ class AddForm extends Component {
           />
         </div>
         <div>
-          <input value="Submit" id="submit" type="submit" />
-          <input value="Cancel" id="cancel" type="button" onClick={this.props.handleCancel} />
+          <input value="Submit" type="submit" />
+          <input value="Cancel" type="button" onClick={this.props.handleCancel} />
         </div>
       </form>
     );
