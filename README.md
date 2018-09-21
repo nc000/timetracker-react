@@ -10,6 +10,7 @@ Time tracker is a simple website for tracking how you spend your time.
   * [Chart.js](https://github.com/reactjs/react-chartjs)
   * [Font Awesome](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
   * [React Color](http://casesandberg.github.io/react-color/)
+  * [Styled Components](https://www.styled-components.com/)
 * [Redux.js](https://redux.js.org/)
 
 ## Usage
