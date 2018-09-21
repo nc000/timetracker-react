@@ -1,0 +1,1 @@
+{"version":3,"sources":["global.css"],"names":[],"mappings":"oEAEA,UACE,WACA,YACA,SACA,SAAW","file":"static/css/main.d03fd242.css","sourcesContent":["@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');\r\n\r\nhtml, body {\r\n  width: 100%;\r\n  height: 100%;\r\n  margin: 0;\r\n  padding: 0;\r\n}\n\n\n// WEBPACK FOOTER //\n// ./src/global.css"],"sourceRoot":""}
