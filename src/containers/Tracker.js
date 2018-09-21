@@ -1,8 +1,64 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateLapse, deleteTracker } from '../actions';
+import styled from 'styled-components';
 import EditForm from '../components/EditForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+`;
+
+const Button = styled.button`
+  font-size: 30px;
+  flex-basis: 5%;
+  border: 0;
+  margin: 0;
+  cursor: pointer;
+  text-decoration: none;
+  background: transparent;
+  transition: all 0.2s;
+  outline: none;
+
+  :hover {
+    color: rgb(167, 167, 167);
+  }
+
+  ${props => props.delete && `
+    margin-right: 5px;
+
+    :hover {
+      color: rgb(255, 109, 109);
+    }
+  `};
+
+  @media screen and (max-width: 768px) {
+    font-size: 25px;
+  }
+`;
+
+const Span = styled.span`
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+
+  :first-of-type {
+    flex-basis: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  :last-of-type {
+    flex-basis: 20%;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 25px;
+  }
+`;
 
 class Tracker extends Component {
   constructor(props) {
@@ -59,31 +115,32 @@ class Tracker extends Component {
 
   render() {
     return (
-      <div className="tracker">
-        <button 
-          className="play-pause" 
+      <Wrapper>
+        <Button 
           onClick={this.handlePlayToggle}>
           {this.state.running ? <FontAwesomeIcon icon="pause" /> : <FontAwesomeIcon icon="play" />}
-        </button>
-        <span>{this.props.tracker.title}</span>
-        <span>{this.formatTime(this.props.tracker.lapse/1000)}</span>
-        <button 
-          className="edit" 
+        </Button>
+        <Span>{this.props.tracker.title}</Span>
+        <Span>{this.formatTime(this.props.tracker.lapse/1000)}</Span>
+        <Button 
           onClick={this.handleEditToggle}>
           <FontAwesomeIcon icon="edit" />
-        </button>
-        <button 
-          className="delete" 
+        </Button>
+        <Button 
+          delete
           onClick={this.handleDelete}>
           <FontAwesomeIcon icon="trash-alt" />
-        </button>
+        </Button>
         {this.state.editMode ? 
-          <div>
-            <EditForm tracker={this.props.tracker} handleCancel={this.handleCancel} />
-            <div id="cover-div" />
-          </div> 
-        : ""}
-      </div>
+          <EditForm 
+            id={this.props.tracker.id}
+            title={this.props.tracker.title} 
+            colour={this.props.tracker.colour}
+            handleCancel={this.handleCancel} 
+          /> 
+          : <React.Fragment></React.Fragment>
+        }
+      </Wrapper>
     );
   }
 }

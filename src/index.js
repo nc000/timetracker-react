@@ -6,7 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStroopwafel, faPlay, faPause, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import App from './containers/App';
 import reducer from './reducers';
-import './index.css';
+import './global.css';
 
 library.add(faStroopwafel, faPlay, faPause, faEdit, faTrashAlt);
 
