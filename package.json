@@ -9,7 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.1.2",
     "chart.js": "^2.7.2",
     "i": "^0.3.6",
-    "npm": "^6.4.1",
+    "npm": "^6.14.6",
     "react": "^16.4.2",
     "react-chartjs-2": "^2.7.4",
     "react-color": "^2.14.1",
